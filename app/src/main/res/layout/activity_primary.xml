@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/rootLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Campo de texto para ingresar el nombre del usuario -->
+    <EditText
+        android:id="@+id/etUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingresa tu nombre"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="16dp" />
+
+    <!-- TextView para mostrar el nombre ingresado o cargado -->
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre cargado: "
+        android:textSize="16sp"
+        android:layout_marginBottom="20dp" />
+
+    <Button
+        android:id="@+id/btnSaveLocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar en Local"
+        android:layout_marginEnd="8dp" />
+
+
+
+    <!-- Botones para guardar y cargar desde Firebase -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnSaveFirebase"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Guardar en Firebase"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnLoadFirebase"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Cargar desde Firebase" />
+    </LinearLayout>
+
+    <!-- Botón para abrir la SettingsActivity -->
+    <Button
+        android:id="@+id/btnSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ir a Configuración"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

@@ -1,47 +1,56 @@
 package com.example.saludo_con_firebase
 
+import android.content.Intent
+import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.saludo_con_firebase.ui.theme.Saludo_con_FirebaseTheme
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isVisible
 
 class MainActivity : ComponentActivity() {
+
+
+    private lateinit var rootLayout: LinearLayout
+    private lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            Saludo_con_FirebaseTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+        setContentView(R.layout.activity_main)
+
+        rootLayout = findViewById(R.id.rootLayout)
+        sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE)
+
+        // Cargar el color de fondo guardado
+        val savedColor = sharedPreferences.getInt("backgroundColor", Color.WHITE)
+        rootLayout.setBackgroundColor(savedColor)
+
+        // Obtener el TextView para el saludo
+        val tvGreeting: TextView = findViewById(R.id.tvGreeting)
+        // Obtener el botón para ir a la actividad principal
+        val btnGoToMainActivity: Button = findViewById(R.id.btnGoToMainActivity)
+
+        // Obtener la hora actual
+        val hourOfDay = java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY)
+
+        // Establecer el saludo según la hora del día
+        val greeting = when {
+            hourOfDay in 5..13 -> "¡Buenos días!"
+            hourOfDay in 14..22-> "¡Buenas tardes!"
+            else -> "¡Buenas noches!"
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+        // Actualizar el saludo en el TextView
+        tvGreeting.text = greeting
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Saludo_con_FirebaseTheme {
-        Greeting("Android")
+        // Configurar el botón para navegar a la actividad principal
+        btnGoToMainActivity.setOnClickListener {
+            // Navegar a la Actividad Principal (deberás crear esta actividad más adelante)
+            val intent = Intent(this, PrimaryActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

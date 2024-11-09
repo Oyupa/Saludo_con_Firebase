@@ -23,6 +23,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".PrimaryActivity"
+            android:exported="true"
+            android:label="Actividad Principal" />
+
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true"
+            android:label="Configuración" />
+
     </application>
 
 </manifest>

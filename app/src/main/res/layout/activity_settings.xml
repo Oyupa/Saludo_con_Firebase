@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/rootLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <!-- Botones para cambiar el color de fondo -->
+    <Button
+        android:id="@+id/buttonWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blanco" />
+
+    <Button
+        android:id="@+id/buttonGray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gris"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/buttonRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rojo"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/buttonGreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verde"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/buttonBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Azul"
+        android:layout_marginTop="10dp" />
+
+    <!-- Botón para volver a la MainActivity -->
+    <Button
+        android:id="@+id/buttonBackToMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volver al Saludo"
+        android:layout_marginTop="20dp" />
+</LinearLayout>
+
